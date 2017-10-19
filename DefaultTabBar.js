@@ -38,8 +38,9 @@ const DefaultTabBar = createReactClass({
   renderTab(name, page, isTabActive, onPressHandler) {
     const { activeTextColor, inactiveTextColor, textStyle, } = this.props;
     const textColor = isTabActive ? activeTextColor : inactiveTextColor;
-    const fontWeight = isTabActive ? 'bold' : 'normal';
-
+    // const fontWeight = isTabActive ? 'bold' : 'normal';
+    const fontWeight = 'normal';    
+    
     return <Button
       style={{flex: 1, }}
       key={name}
@@ -58,7 +59,10 @@ const DefaultTabBar = createReactClass({
 
   render() {
     const containerWidth = this.props.containerWidth;
-    const numberOfTabs = this.props.tabs.length;
+    // const numberOfTabs = this.props.tabs.length;
+    const number = this.props.tabs.length > 0 ?this.props.tabs.length:1;
+    const numberOfTabs = 10;
+
     const tabUnderlineStyle = {
       position: 'absolute',
       width: containerWidth / numberOfTabs,
@@ -69,7 +73,7 @@ const DefaultTabBar = createReactClass({
 
     const translateX = this.props.scrollValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [0,  containerWidth / numberOfTabs],
+      outputRange:[(containerWidth/number -(containerWidth / numberOfTabs))/2,containerWidth / 2+(containerWidth/2 -(containerWidth / numberOfTabs))/2]
     });
     return (
       <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}>
@@ -99,7 +103,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 10,
+    paddingTop:8,
+    
+    // paddingBottom: 10,
   },
   tabs: {
     height: 50,
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
+    borderColor: 'white',
   },
 });
 

@@ -127,8 +127,9 @@ const ScrollableTabBar = createReactClass({
   renderTab(name, page, isTabActive, onPressHandler, onLayoutHandler) {
     const { activeTextColor, inactiveTextColor, textStyle, } = this.props;
     const textColor = isTabActive ? activeTextColor : inactiveTextColor;
-    const fontWeight = isTabActive ? 'bold' : 'normal';
-
+    // const fontWeight = isTabActive ? 'bold' : 'normal';
+    const fontWeight = 'normal';
+    
     return <Button
       key={`${name}_${page}`}
       accessible={true}
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
+    borderColor: 'white',
   },
   tabs: {
     flexDirection: 'row',
